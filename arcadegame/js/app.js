@@ -29,7 +29,7 @@ class Player {
     constructor(){
         this.x = 0;
         this.y = 0;
-        this.sprite = 'images/char-princess-girl.png;'
+        this.sprite = 'images/char-princess-girl.png';
     }
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
