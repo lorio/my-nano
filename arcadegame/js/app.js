@@ -41,11 +41,11 @@ class Player {
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
-    handleInput(string, input) {
+    handleInput() {
         if (this.x >= 0 && this.x <= this.mvX * 4) {
-          if (player.input === 'left') { 
-            this.x -= this.mvX;
-            render();
+            if (this.input === 'left') { 
+                this.x -= this.mvX;
+                render();
             } if (player.input === 'right') {
                 this.x += this.mvX;
             } if (player.input === 'up') {
