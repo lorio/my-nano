@@ -1,5 +1,10 @@
 // Enemies our player must avoid
 let allEnemies = [];
+/*class Enemy {
+    constructor(x, y, speed){
+
+    }
+}*/
 var Enemy = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
@@ -26,16 +31,34 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 
 class Player {
-    constructor(){
-        this.x = 0;
-        this.y = 0;
+    constructor(x, y){
+        this.mvX = 101;
+        this.mvY = 83;
+        this.x = 101 * 2;
+        this.y = 83 * 5;
         this.sprite = 'images/char-princess-girl.png';
     }
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
-    //update
-    // a handleInput() method.
+    handleInput(string, input) {
+        if (this.x >= 0 && this.x <= this.mvX * 4) {
+          if (player.input === 'left') { 
+            this.x -= this.mvX;
+            render();
+            } if (player.input === 'right') {
+                this.x += this.mvX;
+            } if (player.input === 'up') {
+                this.y -= this.mvY;
+            } if (player.input === 'down') {
+                this.y += this.mvY;
+            }
+        }
+    }
+    update() {
+        
+        render()
+    }
 }
 const player = new Player();
 
