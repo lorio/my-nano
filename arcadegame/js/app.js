@@ -1,33 +1,21 @@
-// Enemies our player must avoid
+
+//code from Roderick creates Enemy instances and positions starting points
+//let allEnemies = [...Array(3)].map((_,i)=> new Enemy(0,i+1));
 let allEnemies = [];
-/*class Enemy {
-    constructor(x, y, speed){
-
+class Enemy {
+    constructor(x, y){
+        this.x = x;
+        this.y = y;
+        this.sprite = 'images/enemy-bug.png'; 
     }
-}*/
-var Enemy = function() {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    }
+    update(dt) {
+        render();
+    }
+}
 
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-bug.png';
-};
-
-// Update the enemy's position, required method for game
-// Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
-};
-
-// Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
-
-// Now write your own player class
 // This class requires an update(), render() and
 
 class Player {
@@ -41,9 +29,9 @@ class Player {
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
-    handleInput() {
+    handleInput(mvX, mvY) {
         if (this.x >= 0 && this.x <= this.mvX * 4) {
-            if (this.input === 'left') { 
+            if (mvX === 'left') { 
                 this.x -= this.mvX;
                 render();
             } if (player.input === 'right') {
@@ -55,10 +43,10 @@ class Player {
             }
         }
     }
-    update() {
+    /*update() {
         
         render()
-    }
+    }*/
 }
 const player = new Player();
 
