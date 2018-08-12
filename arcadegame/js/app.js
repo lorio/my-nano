@@ -1,7 +1,5 @@
 
-//code from Roderick creates Enemy instances and positions starting points
-//let allEnemies = [...Array(3)].map((_,i)=> new Enemy(0,i+1));
-let allEnemies = [];
+//let allEnemies = [];
 class Enemy {
     constructor(x, y){
         this.x = x;
@@ -12,37 +10,44 @@ class Enemy {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
     update(dt) {
+        /*for enemy in allEnemies {
+
+        }*/
+
         render();
     }
 }
-
+//code from Roderick creates Enemy instances and positions starting points
+let allEnemies = [...Array(3)].map((_,i)=> new Enemy(0,i+60));
+/*const enemies = new Enemy()*/
 // This class requires an update(), render() and
 
 class Player {
     constructor(x, y){
         this.mvX = 101;
         this.mvY = 83;
-        this.x = 101 * 2;
-        this.y = 83 * 5;
+        this.x = this.mvX * 2;
+        this.y = this.mvY * 5;
         this.sprite = 'images/char-princess-girl.png';
     }
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
-    handleInput(mvX, mvY) {
-        if (this.x >= 0 && this.x <= this.mvX * 4) {
-            if (mvX === 'left') { 
-                this.x -= this.mvX;
-                render();
-            } if (player.input === 'right') {
-                this.x += this.mvX;
-            } if (player.input === 'up') {
+    handleInput(keyup) {
+        if (keyup === 'left' && this.x > 0) {
+            this.x -= this.mvX;
+        };            
+        if (keyup === 'right' && this.x < 400) {
+            this.x += this.mvX;
+        };
+        
+        if (keyup === 'up' && this.y > 0) {
                 this.y -= this.mvY;
-            } if (player.input === 'down') {
+        };
+        if (keyup === 'down' && this.y < 490) {
                 this.y += this.mvY;
-            }
-        }
-    }
+        };
+    };
     /*update() {
         
         render()
