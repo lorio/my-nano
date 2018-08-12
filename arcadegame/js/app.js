@@ -1,26 +1,28 @@
 
-//let allEnemies = [];
 class Enemy {
-    constructor(x, y){
+    constructor(x, y, speed){
         this.x = x;
         this.y = y;
+        this.speed = speed;
         this.sprite = 'images/enemy-bug.png'; 
     }
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
     update(dt) {
-        /*for enemy in allEnemies {
-
-        }*/
-
-        render();
+        this.x =+ this.speed * dt;
+        if (this.x > mvX * 5) {
+            this.x = 0;
+            this.speed = 100 + Math.floor(Math.random() * 200);
+        }
     }
 }
-//code from Roderick creates Enemy instances and positions starting points
-let allEnemies = [...Array(3)].map((_,i)=> new Enemy(0,i+60));
-/*const enemies = new Enemy()*/
-// This class requires an update(), render() and
+//Array.map code from @Roderick creates Enemy instances and assigns starting points
+// Place all enemy objects in an array called allEnemies
+let allEnemies = [...Array(3)].map((_,y)=> new Enemy(0, y));
+allEnemies[0].y = 63;
+allEnemies[1].y = 147;
+allEnemies[2].y = 230;
 
 class Player {
     constructor(x, y){
@@ -56,7 +58,7 @@ class Player {
 const player = new Player();
 
 // Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
+
 // Place the player object in a variable called player
 
 
