@@ -1,25 +1,25 @@
-
+//helpful resources: https://www.youtube.com/watch?v=7PHhRrjgTDA Ben Cunningham, Matthew Cranford walkthroughs https://matthewcranford.com, @Roderick Zoom webinar.
+const colW = 101;
 class Enemy {
     constructor(x, y, speed){
+        this.colW = colW;
         this.x = x;
         this.y = y;
-        this.speed = speed;
+        this.speed = 100 + Math.floor(Math.random() * 200);
         this.sprite = 'images/enemy-bug.png'; 
     }
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
     update(dt) {
-        this.x =+ this.speed * dt;
-        if (this.x > mvX * 5) {
-            this.x = 0;
-            this.speed = 100 + Math.floor(Math.random() * 200);
+        this.x += this.speed * dt;
+        if (this.x > colW * 5) {
+            this.x = -50;
         }
     }
 }
-//Array.map code from @Roderick creates Enemy instances and assigns starting points
-// Place all enemy objects in an array called allEnemies
-let allEnemies = [...Array(3)].map((_,y)=> new Enemy(0, y));
+//Create an array of Enemy instances and assign starting points
+let allEnemies = [...Array(3)].map((_,x,y)=> new Enemy(0, y));
 allEnemies[0].y = 63;
 allEnemies[1].y = 147;
 allEnemies[2].y = 230;
@@ -50,18 +50,11 @@ class Player {
                 this.y += this.mvY;
         };
     };
-    /*update() {
-        
-        render()
-    }*/
 }
-const player = new Player();
 
 // Now instantiate your objects.
-
 // Place the player object in a variable called player
-
-
+const player = new Player();
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
