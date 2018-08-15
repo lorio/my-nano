@@ -16,13 +16,25 @@ class Enemy {
         if (this.x > colW * 5) {
             this.x = -50;
         }
+        
+       if (player.y - 20 === this.y &&
+            player.x + 80 > this.x &&
+            player.x < this.x + 80)  {
+            this.speed = 0;
+            window.location.reload();
+        }
     }
+    /*resetGame() {
+        this.speed = 0;
+        window.location.reload();
+    }*/
+
 }
 //Create an array of Enemy instances and assign starting points
 let allEnemies = [...Array(3)].map((_,x,y)=> new Enemy(0, y));
 allEnemies[0].y = 63;
-allEnemies[1].y = 147;
-allEnemies[2].y = 230;
+allEnemies[1].y = 146;
+allEnemies[2].y = 229;
 
 class Player {
     constructor(x, y){
@@ -35,6 +47,7 @@ class Player {
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
+
     handleInput(keyup) {
         if (keyup === 'left' && this.x > 0) {
             this.x -= this.mvX;
