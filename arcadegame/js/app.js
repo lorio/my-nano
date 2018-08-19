@@ -59,7 +59,7 @@ class Player {
         if (keyup === 'up' && this.y > 0) {
                 this.y -= this.mvY;
         };
-        if (keyup === 'down' && this.y < 490) {
+        if (keyup === 'down' && this.y < 415) {
                 this.y += this.mvY;
         };
         //win message
