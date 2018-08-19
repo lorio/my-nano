@@ -2,7 +2,7 @@ frontend-nanodegree-arcade-game
 ===============================
 
 ## Instructions
-player can move the princess up, down, right or left using keyboard arrow keys. She must avoid the enemy bugs on the paved area to reach the water, at which point she has won the game. If she collides with a bug, she is sent back to her starting point.
+A player can move the princess up, down, right or left using keyboard arrow keys. The princess must avoid the enemy bugs on the paved area in order to reach the water, at which point she has won the game. If she collides with a bug, she is sent back to her starting point.
 ## Dependencies
 Engine and resources provided by Udacity.
 ## Contributing
