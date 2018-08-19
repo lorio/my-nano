@@ -7,7 +7,7 @@ class Enemy {
         this.y = y;
         //enemy speed calculation from Ben Cunningham video
         this.speed = 100 + Math.floor(Math.random() * 200);
-        this.sprite = 'images/enemy-bug.png'; 
+        this.sprite = 'images/enemy-bug.png';
     }
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -17,7 +17,7 @@ class Enemy {
         if (this.x > colW * 5) {
             this.x = -50;
         }
-    //reset if collision occurs   
+    //reset if collision occurs
        if (player.y - 20 === this.y &&
             player.x + 80 > this.x &&
             player.x < this.x + 80)  {
@@ -50,11 +50,11 @@ class Player {
     handleInput(keyup) {
         if (keyup === 'left' && this.x > 0) {
             this.x -= this.mvX;
-        };            
+        };
         if (keyup === 'right' && this.x < 400) {
             this.x += this.mvX;
         };
-        
+
         if (keyup === 'up' && this.y > 0) {
                 this.y -= this.mvY;
         };
