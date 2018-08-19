@@ -5,6 +5,7 @@ class Enemy {
         this.colW = colW;
         this.x = x;
         this.y = y;
+        //enemy speed calculation from Ben Cunningham video
         this.speed = 100 + Math.floor(Math.random() * 200);
         this.sprite = 'images/enemy-bug.png'; 
     }
@@ -16,7 +17,7 @@ class Enemy {
         if (this.x > colW * 5) {
             this.x = -50;
         }
-    //if collision    
+    //reset if collision occurs   
        if (player.y - 20 === this.y &&
             player.x + 80 > this.x &&
             player.x < this.x + 80)  {
@@ -24,10 +25,6 @@ class Enemy {
             window.location.reload();
         }
     }
-    /*resetGame() {
-        this.speed = 0;
-        window.location.reload();
-    }*/
 
 }
 //Create an array of Enemy instances and assign starting points
@@ -38,8 +35,10 @@ allEnemies[2].y = 229;
 
 class Player {
     constructor(x, y){
+        //size of player move on x and y axis
         this.mvX = 101;
         this.mvY = 83;
+        //starting positions
         this.x = this.mvX * 2;
         this.y = this.mvY * 5;
         this.sprite = 'images/char-princess-girl.png';
