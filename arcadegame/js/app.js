@@ -16,11 +16,11 @@ class Enemy {
         if (this.x > colW * 5) {
             this.x = -50;
         }
-        
+    //if collision    
        if (player.y - 20 === this.y &&
             player.x + 80 > this.x &&
             player.x < this.x + 80)  {
-            this.speed = 0;
+            this.x = 0;
             window.location.reload();
         }
     }
@@ -61,6 +61,12 @@ class Player {
         };
         if (keyup === 'down' && this.y < 490) {
                 this.y += this.mvY;
+        };
+        //win message
+        if (this.y === 0) {
+            setTimeout (function(){
+                alert('You are amazing!');
+            }, 200);
         };
     };
 }
